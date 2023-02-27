@@ -1,42 +1,36 @@
 import '../App.css';
-import logo from '../images/logo.svg';
+import Header from './Header'
+import Main from './Main';
+import Footer from './Footer'
+
 
 function App() {
+
+  let isEditProfilePopupOpen = false;
+  let isAddPlacePopupOpen = false;
+  let isEditAvatarPopupOpen = false;
+
+  function handleEditAvatarClick() {
+    document.querySelector('.popup-update').classList.add('popup_opened');
+    isEditAvatarPopupOpen = true;
+  }
+
+  function handleEditProfileClick() {
+    document.querySelector('.popup-edit').classList.add('popup_opened');
+    isEditProfilePopupOpen = true;
+  }
+
+  function handleAddPlaceClick() {
+    document.querySelector('.popup-add').classList.add('popup_opened');
+    isAddPlacePopupOpen = true;
+  }
+
   return (
     <div className="page">
       <div className="container">
-   
-    <header className="header container__header">
-      <img className="logo header__logo" src={logo} alt="Логотип страницы сайта Место"/>
-    </header>
-
-    <main className="content container__content">
-      <section className="profile">
-        <div className="profile__wrapper">
-          <div className="profile__avatar-container">
-            <div className="profile__avatar">
-            </div>
-            <button className="profile__avatar-edit-button"></button>
-          </div>
-          <div className="profile__info">
-              <h1 className="profile__name"></h1>
-              <button className="profile__edit-button" type="button" aria-label="Редактировать"></button>
-              <p className="profile__about"></p>
-          </div>
-        </div>
-        <button className="profile__add-button" type="button" aria-label="Добавить"></button>
-      </section>
-
-      <section className="places content__places">
-        <ul className="places__items">
-
-        </ul>
-      </section>
-    </main>
-
-    <footer className="footer container__footer">
-      <h3 className="footer__copyright">© 2020 Mesto Russia</h3>
-    </footer>
+        <Header />
+        <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} isOpen={false} />
+        <Footer />
 
     <section className="popup popup-edit">
       <div className="popup__container">
@@ -100,15 +94,7 @@ function App() {
       </div>
     </section>
 
-    <section className="popup popup-image">
-      <div className="popup__container">
-        <figure className="popup-image__figure">
-          <button className="popup__close" type="button" aria-label="Закрыть"></button>
-          <img className="popup-image__photo" alt=""/>
-          <figcaption className="popup-image__figcaption"></figcaption>
-        </figure>
-      </div>
-    </section>
+
 
     <section className="popup popup-delete">
       <div className="popup__container">
