@@ -59,7 +59,6 @@ function App() {
   }
 
   function handleCardClick(card) {
-    console.log('Вы нажали на картинку')
     setSelectedCard(card);
   }
 
