@@ -1,0 +1,74 @@
+<section className="popup popup-edit">
+    <div className="popup__container">
+      <form className="form popup__form" name="user-info">
+        <button className="popup__close" type="button" aria-label="Закрыть"></button>
+        <h2 className="popup__title">Редактировать профиль</h2>
+        <div className="form__container">
+          
+        </div>
+        <button className="form__button" type="submit" aria-label="Сохранить">Сохранить</button>
+      </form>
+    </div>
+  </section>
+
+  <section className="popup popup-add">
+    <div className="popup__container">
+      <form className="form popup__form" name="new-card">
+        <button className="popup__close popup__close_type_card" type="button" aria-label="Закрыть"></button>
+        <h2 className="popup__title">Новое место</h2>
+        <div className="form__container">
+          <input className="form__input"
+            id="place-name"
+            type="text"
+            minLength="2"
+            maxLength="30"
+            value=""
+            name="place-name"
+            placeholder="Название"
+            required/>
+          <span id="place-name-error" className="form__error"></span>
+          <input className="form__input"
+            id="link"
+            type="url"
+            value=""
+            name="place-link"
+            placeholder="Ссылка на картинку"
+            required/>
+          <span id="link-error" className="form__error"></span>
+        </div>
+        <button className="form__button" type="submit" aria-label="Создать">Создать</button>
+      </form>
+    </div>
+  </section>
+
+
+
+  <section className="popup popup-delete">
+    <div className="popup__container">
+      <form className="form popup__form" name="delete-card">
+        <button className="popup__close" type="button" aria-label="Закрыть"></button>
+        <h2 className="popup__title popup__title_margin_bottom">Вы уверены?</h2>
+        <button className="form__button" type="submit" aria-label="Сохранить">Да</button>
+      </form>
+    </div>
+  </section>
+
+  <section className="popup popup-update">
+    <div className="popup__container">
+      <form className="form popup__form" name="avatar">
+        <button className="popup__close popup__close_type_card" type="button" aria-label="Закрыть"></button>
+        <h2 className="popup__title">Обновить аватар</h2>
+        <div className="form__container">
+          <input className="form__input"
+            id="avatar"
+            type="url"
+            value=""
+            name="avatar-link"
+            placeholder="Ссылка на картинку"
+            required/>
+          <span id="avatar-error" className="form__error"></span>
+        </div>
+        <button className="form__button" type="submit" aria-label="Создать">Сохранить</button>
+      </form>
+    </div>
+  </section>
