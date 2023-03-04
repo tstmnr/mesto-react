@@ -87,9 +87,74 @@ function App() {
 
         <Footer />
 
-        <PopupWithForm name='edit' title='Редактировать профиль' isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} children={''} />
-        <PopupWithForm name='add' title='Новое место' isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} />
-        <PopupWithForm name='update' title='Обновить аватар' isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} />
+        <PopupWithForm
+          name='edit'
+          title='Редактировать профиль'
+          isOpen={isEditProfilePopupOpen}
+          onClose={closeAllPopups}
+          children={<>
+            <input className="form__input"
+              id="name"
+              type="text"
+              minLength="2"
+              maxLength="40"
+              value=""
+              name="name"
+              placeholder="Имя"
+              required/>
+            <span id="name-error" className="form__error"></span>
+            <input className="form__input"
+              id="about"
+              type="text"
+              minLength="2"
+              maxLength="200"
+              value=""
+              name="about"
+              placeholder="Коротко о себе"
+              required/>
+            <span id="about-error" className="form__error"></span>
+        </>} />
+        <PopupWithForm
+          name='add'
+          title='Новое место'
+          isOpen={isAddPlacePopupOpen}
+          onClose={closeAllPopups}
+          children={<>
+            <input className="form__input"
+              id="place-name"
+              type="text"
+              minLength="2"
+              maxLength="30"
+              value=""
+              name="place-name"
+              placeholder="Название"
+              required/>
+            <span id="place-name-error" className="form__error"></span>
+            <input className="form__input"
+              id="link"
+              type="url"
+              value=""
+              name="place-link"
+              placeholder="Ссылка на картинку"
+              required/>
+            <span id="link-error" className="form__error"></span>
+        </>} />
+        <PopupWithForm
+          name='update'
+          title='Обновить аватар'
+          isOpen={isEditAvatarPopupOpen}
+          onClose={closeAllPopups}
+          children={<>
+            <input className="form__input"
+              id="avatar"
+              type="url"
+              value=""
+              name="avatar-link"
+              placeholder="Ссылка на картинку"
+              required/>
+            <span id="avatar-error" className="form__error"></span>
+          </>}
+        />
 
         <PopupWithForm name='delete' title='Вы уверены?' isOpen='false' />
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />
