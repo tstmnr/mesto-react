@@ -4,58 +4,26 @@ import Header from './Header'
 import Main from './Main';
 import Footer from './Footer'
 import PopupWithForm from './PopupWithForm';
-import api from '../utils/Api';
 import ImagePopup from './ImagePopup';
 
 
 function App() {
 
-  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState('');
-  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState('');
-  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState('');
-  const [userName, setUserName] = React.useState('');
-  const [userDescription, setUserDescription] = React.useState('');
-  const [userAvatar, setUserAvatar] = React.useState('');
-  const [cards, setCards] = React.useState([]);
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState({});
 
-  React.useEffect(() => {
-    api.getUserInfo()
-      .then(userData => {
-        setUserName(userData.name);
-        setUserDescription(userData.about);
-        setUserAvatar(userData.avatar);
-
-        api.getInitialCards()
-          .then(cardsData => {
-            setCards(
-              cardsData.map((item) => ({
-                id: item._id,
-                src: item.link,
-                name: item.name,
-                likes: item.likes
-              }))
-            );
-          })
-          .catch((err) => {
-            console.log(err);
-          })
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-  }, []);
-
   function handleEditAvatarClick() {
-    setIsEditAvatarPopupOpen('popup_opened');
+    setIsEditAvatarPopupOpen(true);
   }
 
   function handleEditProfileClick() {
-    setIsEditProfilePopupOpen('popup_opened');
+    setIsEditProfilePopupOpen(true);
   }
 
   function handleAddPlaceClick() {
-    setIsAddPlacePopupOpen('popup_opened');
+    setIsAddPlacePopupOpen(true);
   }
 
   function handleCardClick(card) {
@@ -63,10 +31,10 @@ function App() {
   }
 
   function closeAllPopups() {
-    setIsEditAvatarPopupOpen('');
-    setIsEditProfilePopupOpen('');
-    setIsAddPlacePopupOpen('');
-    setSelectedCard('');
+    setIsEditAvatarPopupOpen(false);
+    setIsEditProfilePopupOpen(false);
+    setIsAddPlacePopupOpen(false);
+    setSelectedCard({});
   }
 
   return (
@@ -77,10 +45,6 @@ function App() {
           onEditProfile={handleEditProfileClick}
           onAddPlace={handleAddPlaceClick}
           onEditAvatar={handleEditAvatarClick}
-          name={userName}
-          about={userDescription}
-          avatar={userAvatar}
-          cards={cards}
           onCardClick={handleCardClick}
         />
 
@@ -91,6 +55,7 @@ function App() {
           title='Редактировать профиль'
           isOpen={isEditProfilePopupOpen}
           onClose={closeAllPopups}
+          buttonText='Сохранить'
           children={<>
             <input className="form__input"
               id="name"
@@ -118,6 +83,7 @@ function App() {
           title='Новое место'
           isOpen={isAddPlacePopupOpen}
           onClose={closeAllPopups}
+          buttonText='Создать'
           children={<>
             <input className="form__input"
               id="place-name"
@@ -143,6 +109,7 @@ function App() {
           title='Обновить аватар'
           isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
+          buttonText='Сохранить'
           children={<>
             <input className="form__input"
               id="avatar"
@@ -155,7 +122,13 @@ function App() {
           </>}
         />
 
-        <PopupWithForm name='delete' title='Вы уверены?' isOpen='false' />
+        <PopupWithForm
+          name='delete'
+          title='Вы уверены?'
+          isOpen={false}
+          buttonText='Да'
+        />
+
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />
       </div>
     </div>

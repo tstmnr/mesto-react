@@ -12,7 +12,7 @@ function Card({ name, src, likes, onCardClick }) {
 
   return (
     <li className="card">
-      <img className="card__image" alt='' src={src} onClick={handleClick} />
+      <img className="card__image" alt={`Картинка ${name}`} src={src} onClick={handleClick} />
       <div className="card__info">
         <h2 className="card__title">{name}</h2>
         <div className="card__favourites-wrapper">

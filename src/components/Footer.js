@@ -1,7 +1,7 @@
 function Footer() {
     return (
         <footer className="footer container__footer">
-            <h3 className="footer__copyright">© 2020 Mesto Russia</h3>
+            <h3 className="footer__copyright">© {new Date().getFullYear()} Mesto Russia</h3>
         </footer>
     );
 }

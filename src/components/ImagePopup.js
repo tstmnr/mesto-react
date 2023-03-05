@@ -1,6 +1,6 @@
 function ImagePopup({ card, onClose }) {
   return (
-    <section className={`popup popup-image ${card ? "popup_opened" : ""}`}>
+    <section className={`popup popup-image ${card.src ? "popup_opened" : ""}`}>
       <div className="popup__container">
         <figure className="popup-image__figure">
           <button className="popup__close" type="button" aria-label="Закрыть" onClick={onClose}></button>
