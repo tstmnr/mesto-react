@@ -145,11 +145,11 @@ function App() {
             onCardLike={handleCardLike}
             onCardDelete={handleCardDelete}
           />
-
+        </CurrentUserContext.Provider>
 
         <Footer />
 
-        <CurrentUserContext.Provider value={currentUser} ></CurrentUserContext.Provider>
+        <CurrentUserContext.Provider value={currentUser} >
           <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onSubmit={handleUpdateUserData} />
         </CurrentUserContext.Provider>
 
