@@ -158,11 +158,10 @@ function App() {
         <CurrentUserContext.Provider value={currentUser} >
           <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onSubmit={handleUpdateUserData} />
         </CurrentUserContext.Provider>
+
         <DeletePopup card={cardForDelete} isOpen={isDeletePopupOpen} onClose={closeAllPopups} onSubmit={handleCardDelete} />
         <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onSubmit={handleUpdateAvatar} />
         <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onSubmit={handleAddPlaceSubmit} />
-
-
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />
       </div>
     </div>

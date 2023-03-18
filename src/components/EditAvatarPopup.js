@@ -5,6 +5,10 @@ function EditAvatarPopup( {isOpen, onClose, onSubmit } ) {
 
   const [changeAvatar, setChangeAvatar] = React.useState('');
 
+  React.useEffect(() => {
+    setChangeAvatar('');
+  }, [isOpen]);
+
   const handleChangeAvatar = (e) => {
     setChangeAvatar(e.target.value);
   }
