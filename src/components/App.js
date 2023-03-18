@@ -31,15 +31,7 @@ function App() {
           _id: userData._id,
         });
 
-        setCards(
-          cardsData.map((item) => ({
-            _id: item._id,
-            link: item.link,
-            name: item.name,
-            likes: item.likes,
-            owner: item.owner._id,
-          }))
-        );
+        setCards(cardsData);
       })
       .catch(err => {
         console.log(err);
@@ -48,7 +40,6 @@ function App() {
 
   function handleUpdateUserData(e, userData) {
     e.preventDefault();
-    console.log(userData);
     api.patchUserInfo(userData)
       .then((data) => {
         setCurrentUser(data);
