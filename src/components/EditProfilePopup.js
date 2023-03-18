@@ -8,10 +8,12 @@ function EditProfilePopup( {isOpen, onClose, onSubmit } ) {
 
   const [changeName, setChangeName] = React.useState(currentUser.name)
   const [changeAbout, setChangeAbout] = React.useState(currentUser.about)
+  const [buttonText, setButtonText] = React.useState('');
 
   React.useEffect(() => {
     setChangeName(currentUser.name);
     setChangeAbout(currentUser.about);
+    setButtonText('Сохранить');
   }, [currentUser, isOpen]);
 
   const handleChangeName = (e) => {
@@ -23,6 +25,7 @@ function EditProfilePopup( {isOpen, onClose, onSubmit } ) {
   }
 
   const handleSubmit = (e) => {
+    setButtonText('Сохранение...');
     onSubmit(e, {
       name: changeName,
       about: changeAbout,
@@ -36,7 +39,7 @@ function EditProfilePopup( {isOpen, onClose, onSubmit } ) {
           isOpen={isOpen}
           onClose={onClose}
           onSubmit={handleSubmit}
-          buttonText='Сохранить'
+          buttonText={buttonText}
           children={<>
             <input className="form__input"
               id="name"

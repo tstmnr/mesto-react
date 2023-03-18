@@ -5,10 +5,12 @@ function AddPlacePopup( {isOpen, onClose, onSubmit } ) {
 
   const [changePlaceName, setChangePlaceName] = React.useState('');
   const [changePlaceLink, setChangePlaceLink] = React.useState('');
+  const [buttonText, setButtonText] = React.useState('');
 
   React.useEffect(() => {
     setChangePlaceName('');
     setChangePlaceLink('');
+    setButtonText('Cоздать')
   }, [isOpen]);
 
   const handleChangePlaceName = (e) => {
@@ -20,6 +22,7 @@ function AddPlacePopup( {isOpen, onClose, onSubmit } ) {
   }
 
   const handleSubmit = (e) => {
+    setButtonText('Cоздание...')
     onSubmit(e, {
       name: changePlaceName,
       link: changePlaceLink,
@@ -33,7 +36,7 @@ function AddPlacePopup( {isOpen, onClose, onSubmit } ) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
-      buttonText='Создать'
+      buttonText={buttonText}
       children={<>
         <input className="form__input"
           id="place-name"

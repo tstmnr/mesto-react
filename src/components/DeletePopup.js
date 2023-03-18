@@ -1,10 +1,18 @@
+import React from "react";
 import PopupWithForm from "./PopupWithForm";
 
 function DeletePopup({ card, isOpen, onClose, onSubmit }) {
 
-const handleSubmit = (e) => {
-  onSubmit(e, card);
-}
+  const [buttonText, setButtonText] = React.useState('');
+
+  React.useEffect(() => {
+    setButtonText('Да');
+  }, [isOpen])
+
+  const handleSubmit = (e) => {
+    setButtonText('Удаление...')
+    onSubmit(e, card);
+  }
 
   return (
     <PopupWithForm
@@ -13,7 +21,7 @@ const handleSubmit = (e) => {
     isOpen={isOpen}
     onClose={onClose}
     onSubmit={handleSubmit}
-    buttonText='Да'
+    buttonText={buttonText}
     children={<></>}
   />
   );

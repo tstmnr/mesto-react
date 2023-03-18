@@ -4,9 +4,11 @@ import PopupWithForm from './PopupWithForm';
 function EditAvatarPopup( {isOpen, onClose, onSubmit } ) {
 
   const [changeAvatar, setChangeAvatar] = React.useState('');
+  const [buttonText, setButtonText] = React.useState('');
 
   React.useEffect(() => {
     setChangeAvatar('');
+    setButtonText('Сохранить');
   }, [isOpen]);
 
   const handleChangeAvatar = (e) => {
@@ -14,6 +16,7 @@ function EditAvatarPopup( {isOpen, onClose, onSubmit } ) {
   }
 
   const handleSubmit = (e) => {
+    setButtonText('Сохранение...');
     onSubmit(e, {
       avatar: changeAvatar,
     });
@@ -26,7 +29,7 @@ function EditAvatarPopup( {isOpen, onClose, onSubmit } ) {
           isOpen={isOpen}
           onClose={onClose}
           onSubmit={handleSubmit}
-          buttonText='Сохранить'
+          buttonText={buttonText}
           children={<>
             <input className="form__input"
               id="avatar"
