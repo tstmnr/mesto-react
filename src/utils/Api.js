@@ -28,12 +28,12 @@ class Api {
     });
   }
 
-  patchAvatar(avatarUrl) {
+  patchAvatar(data) {
     return this._request(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
-        avatar: avatarUrl['avatar-link'],
+        avatar: data.avatar,
       })
     })
   }
@@ -54,8 +54,8 @@ class Api {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
-        name: data['place-name'],
-        link: data['place-link'],
+        name: data.name,
+        link: data.link,
       })
     })
   }
@@ -80,13 +80,22 @@ class Api {
       headers: this._headers,
     })
   }
-}
 
-//создаем API
-export default new Api({
+  changeLikeCardStatus(idCard, isLiked) {
+    if (isLiked) {
+      return this.deleteLike(idCard);
+    } else {
+      return this.setLike(idCard);
+    }
+  }
+}
+const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-59',
   headers: {
     authorization: '1031f3d3-8c3f-4c24-875b-e46b585a685d',
     'Content-Type': 'application/json'
   },
 });
+
+//создаем API
+export default api;
