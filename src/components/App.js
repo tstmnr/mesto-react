@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
-import api from '../utils/api';
-import Header from './Header'
+import { api } from '../utils/api';
+import Header from './Header';
 import Main from './Main';
 import Footer from './Footer'
 import PopupWithForm from './PopupWithForm';
